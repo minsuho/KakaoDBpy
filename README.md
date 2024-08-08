@@ -1,4 +1,4 @@
-# kakaoDBpy
+# KakaoDBpy
 
 ## Redroid, 데이터베이스, 봇 애플리케이션 기반의 챗봇
 
