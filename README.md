@@ -7,7 +7,7 @@
 1. **레포지토리 클론**
 
    ```bash
-   git clone https://github.com/suhomin/kakaoDBBotpy.git
+   git clone https://github.com/minsuho/KakaoDBpy.git
    cd PyKakaoDBBot
    ```
 
