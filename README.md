@@ -8,7 +8,7 @@
 
    ```bash
    git clone https://github.com/minsuho/KakaoDBpy.git
-   cd PyKakaoDBBot
+   cd KakaoDBpy
    ```
 
 2. **Docker 설치**
