@@ -6,7 +6,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class AsyncMsgSender:
-    def __init__(self, room: str, bot_ip: str, bot_socket_port: int):
+    def __init__(self, room: int | str, bot_ip: str, bot_socket_port: int):
         self.ip = bot_ip
         self.port = bot_socket_port
         self.room = room
@@ -17,12 +17,18 @@ class AsyncMsgSender:
     async def connect(self) -> None:
         self.reader, self.writer = await asyncio.open_connection(self.ip, self.port)
 
-    async def send_message(self, is_success: bool, type: str, data: str, room: str) -> None:
+    async def send_message(self, is_success: bool, type: str, data: str, room: int | str) -> None:
+        if type(room) == int:
+            room_id = room
+            room = ""
+        else:
+            room_id = ""
         message = {
             "isSuccess": is_success,
             "type": type,
             "data": base64.b64encode(data.encode()).decode(),
             "room": base64.b64encode(room.encode()).decode(),
+            "roomId": str(room_id),
         }
         if not self.writer or self.writer.is_closing():
             await self.connect()
@@ -33,7 +39,7 @@ class AsyncMsgSender:
             logger.error(f"Error sending message: {e}")
             await self.connect()  # Reconnect on error
 
-    async def send(self, msg: str, room: str = None) -> None:
+    async def send(self, msg: str, room: int | str = None) -> None:
         room = room if room is not None else self.room
         await self.queue.put((True, "normal", msg, room))
         if not self._processing_queue:

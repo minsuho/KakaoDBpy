@@ -125,7 +125,7 @@ class KakaoDB(KakaoDecrypt):
             user_data = await self.get_user(data[4])
             channel_data = await self.get_channel(data[3])
             chat_data = await self.get_chat(data[1])
-            channel_data.send = AsyncMsgSender(channel_data.name, self.BOT_IP, self.BOT_PORT).send
+            channel_data.send = AsyncMsgSender(channel_data.id, self.BOT_IP, self.BOT_PORT).send
 
             if data[2] == 0:
                 v = json.loads(self.decrypt(data[4], json.loads(data[13])['enc'], data[5]))
