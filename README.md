@@ -1,4 +1,4 @@
-# kakaoDBpy
+# KakaoDBpy
 
 ## Redroid, 데이터베이스, 봇 애플리케이션 기반의 챗봇
 
@@ -7,7 +7,7 @@
 1. **레포지토리 클론**
 
    ```bash
-   git clone https://github.com/suhomin/kakaoDBBotpy.git
+   git clone https://github.com/minsuho/KakaoDBpy.git
    cd PyKakaoDBBot
    ```
 
@@ -64,6 +64,19 @@ async def message(user, chat, channel):
     print(chat.text)
 
 bot.run()
+```
+
+#### config.json 파일 예시
+
+```
+{
+    "prefix" : "명령어 접두사",
+    "DB_PATH" : "카카오톡 DB 위치",
+    "BOT_ID" : "봇 카카오톡 계정 고유 ID",
+    "BOT_NAME" : "봇 이름",
+    "BOT_IP" : "127.0.0.1",
+    "BOT_PORT" : 8080
+}
 ```
 
 #### 파일 분리 예시
