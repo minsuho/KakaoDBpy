@@ -170,14 +170,14 @@ def setup_commands(bot: Bot):
 
    ```python
    @bot.on_open_profile_change
-   async def open_profile_change(user, chat, channel):
+   async def open_profile_change(beforeUser, afterUser, channel):
    ```
 
 9. **on_member_type_change**: 방장이나 부방장이 변경될 때 호출됩니다.
 
    ```python
    @bot.on_member_type_change
-   async def member_type_change(user, chat, channel):
+   async def member_type_change(chat, channel):
    ```
 
 ### 객체 속성
